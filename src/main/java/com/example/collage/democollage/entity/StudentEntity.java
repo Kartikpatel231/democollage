@@ -5,10 +5,8 @@ import java.util.List;
 
 
     @Entity
-    @Table(name = "Student")
+    @Table
     public class StudentEntity {
-   //    @OneToOne(mappedBy = "collageId")
-     //  CollageEntity collageEntity;
         @Id
         @Column(name = "Student_Id")
         private Long id;
@@ -16,9 +14,9 @@ import java.util.List;
         private String email;
         private String gender;
 
-        //@OneToMany(cascade = CascadeType.ALL)
-        //@JoinColumn(name = "Collage_id_fk")
-        //private CollageEntity collageList;
+        @ManyToOne(cascade = CascadeType.ALL)
+        @JoinColumn(name = "Collage_id", referencedColumnName = "id")
+        private CollageEntity collageEntity;
 
         public Long getId() {
             return id;
@@ -52,12 +50,12 @@ import java.util.List;
             this.gender = gender;
         }
 
-       // public List<CollageEntity> getCollageList() {
-         //   return collageList;
-        //}
+        public CollageEntity getCollageEntity() {
+            return collageEntity;
+        }
 
-        //public void setCollageList(List<CollageEntity> collageList) {
-          //  this.collageList = collageList;
-        //}//
+        public void setCollageEntity(CollageEntity collageEntity) {
+            this.collageEntity = collageEntity;
+        }
 
     }

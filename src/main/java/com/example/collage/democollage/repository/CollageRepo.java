@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CollageRepo extends CrudRepository<CollageEntity,Long> {
+    //String findByName(String name);
+    //String findByEmail(String email);
 }

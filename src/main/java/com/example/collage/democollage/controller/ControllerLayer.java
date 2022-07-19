@@ -14,29 +14,17 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping("/collage")
 public class ControllerLayer {
-@Autowired
+    @Autowired
     private ServiceLayer serviceLayer;
 
-    private final Logger logger=LoggerFactory.getLogger(this.getClass());
+    @PostMapping("/{collage_id}/student/{student_id}")
+    public void getAll(@PathVariable Long collage_id,@PathVariable Long student_id ){
+        serviceLayer.getAll(collage_id,student_id);
+        }
 
-
-@RequestMapping("/collage")
-    public void getCollage(@RequestBody CollageEntity collageEntity){
-    serviceLayer.getCollage(collageEntity);
-}
-@PostMapping("/collage/post")
-   public List<StudentEntity> getStudents(@RequestBody StudentEntity studentEntity){
-     return serviceLayer.getStudents(studentEntity);
-
-}
- /*   @RequestMapping(method = RequestMethod.DELETE,value = "/collage/delete")
-    public void getDeleted(@RequestBody CollageEntity collageEntity){
-        serviceLayer.getDeleted(collageEntity);
     }
-    @RequestMapping(method = RequestMethod.DELETE,value = "/collage/update")
-    public void getUpdate(@RequestBody CollageEntity collageEntity){
-        serviceLayer.getUpdate(collageEntity);
-    }
-*/
-}
+    //  private final Logger logger=LoggerFactory.getLogger(this.getClass());
+
+
