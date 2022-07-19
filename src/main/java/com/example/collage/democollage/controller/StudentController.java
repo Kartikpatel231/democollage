@@ -14,6 +14,11 @@ public class StudentController {
     @Autowired
     private ServiceLayer serviceLayer;
 
+    @GetMapping("/welcom")
+    public String Hello(){
+        return  "Welcome to kartik patel page";
+    }
+
     @GetMapping("/get")
     public StudentEntity getStudent(@RequestBody StudentEntity studentEntity) {
       return   serviceLayer.getStudent(studentEntity);
